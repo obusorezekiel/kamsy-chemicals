@@ -7,146 +7,132 @@
     <title>Contact Us - Kamsy Chemicals</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">
-                    <a href="index.html">
-                        <i class="fas fa-flask"></i>
-                        <span>Kamsy Chemicals</span>
-                    </a>
-                </div>
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <a href="index.html" class="logo">
+                    <div class="logo-monogram">
+                        <span class="logo-a">K</span><span class="logo-g">C</span>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">KAMSY</span>
+                        <span class="logo-sub">CHEMICALS</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="main-nav">
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
-                    <li class="nav-toggle"><a href="#" id="mobileMenuToggle"><i class="fas fa-bars"></i></a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="products.html">Portfolio</a></li>
+                    <li><a href="contact.html" class="active">Contact us</a></li>
                 </ul>
-            </div>
+                <button class="hamburger-menu" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Page Header -->
-    <section class="page-header page-header-contact">
-        <div class="container">
-            <h1>Contact Us</h1>
-            <p>Get in Touch - We're Here to Help</p>
+    <!-- Page Header Hero -->
+    <section class="page-header-hero">
+        <div class="page-header-background">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&h=600&fit=crop" alt="Contact Us Background">
+            <div class="page-header-overlay"></div>
+        </div>
+        <div class="page-header-content">
+            <h1 class="page-header-title">CONTACT US</h1>
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator">></span>
+                <span class="breadcrumb-current">Contact us</span>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Address</h4>
-                                <p>Lagos, Nigeria</p>
-                            </div>
+    <section class="contact-section-new">
+        <div class="contact-section-wrapper">
+            <div class="contact-info-column">
+                <h2 class="contact-info-title">CONTACT INFO</h2>
+                <p class="contact-info-message">We are looking forward to hear from you</p>
+                <div class="contact-info-details">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone"></i>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Phone</h4>
-                                <p>+234 XXX XXX XXXX</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <p>info@kamsychemicals.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Business Hours</h4>
-                                <p>Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
-                            </div>
+                        <div class="contact-info-text">
+                            <div class="contact-info-label">Phone Number</div>
+                            <div class="contact-info-value">+(234) XXX XXX XXXX</div>
                         </div>
                     </div>
-
-                    <div class="social-contact">
-                        <h4>Follow Us</h4>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="contact-info-divider"></div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info-text">
+                            <div class="contact-info-label">E-Mail Address</div>
+                            <div class="contact-info-value">info@kamsychemicals.com</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-divider"></div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info-text">
+                            <div class="contact-info-label">Address</div>
+                            <div class="contact-info-value">2, Chief Isaac Otto Close, Off Stelian Road, Elelenwon, Rivers State</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Company Name</label>
-                            <input type="text" id="company" name="company">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Select a subject</option>
-                                <option value="product-inquiry">Product Inquiry</option>
-                                <option value="quote-request">Quote Request</option>
-                                <option value="service-inquiry">Service Inquiry</option>
-                                <option value="technical-support">Technical Support</option>
-                                <option value="general">General Inquiry</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="6" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-large">Send Message</button>
-                        <div id="formMessage" class="form-message"></div>
-                    </form>
-                </div>
+            </div>
+            <div class="contact-form-column">
+                <h2 class="contact-form-title">CONNECT WITH US</h2>
+                <p class="contact-form-description">We deliver high-quality services and solutions that strengthen communities and fuel economic advancement.</p>
+                <form class="contact-form-new" id="contactForm">
+                    <div class="form-group-new">
+                        <input type="text" id="name" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group-new">
+                        <input type="tel" id="phone" name="phone" placeholder="Phone number" required>
+                    </div>
+                    <div class="form-group-new">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group-new">
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group-new">
+                        <textarea id="message" name="message" placeholder="Your message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-send-message">SEND MESSAGE</button>
+                    <div id="formMessage" class="form-message"></div>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Map Section -->
-    <section class="map-section">
-        <div class="container">
-            <h2>Find Us</h2>
-            <div class="map-placeholder">
-                <i class="fas fa-map-marked-alt"></i>
-                <p>Map Location</p>
-                <span>Interactive map can be integrated here</span>
-            </div>
+    <section class="map-section-new">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.5!2d6.8!3d4.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwNDgnMDAuMCJOIDbCsDQ4JzAwLjAiRQ!5e0!3m2!1sen!2sng!4v1234567890123!5m2!1sen!2sng&q=2+Chief+Isaac+Otto+Close+Off+Stelian+Road+Elelenwon+Rivers+State+Nigeria" 
+                width="100%" 
+                height="500" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Kamsy Chemicals Location Map">
+            </iframe>
         </div>
     </section>
 

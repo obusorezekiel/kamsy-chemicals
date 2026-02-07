@@ -7,35 +7,52 @@
     <title>Services - Kamsy Chemicals</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">
-                    <a href="index.html">
-                        <i class="fas fa-flask"></i>
-                        <span>Kamsy Chemicals</span>
-                    </a>
-                </div>
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <a href="index.html" class="logo">
+                    <div class="logo-monogram">
+                        <span class="logo-a">K</span><span class="logo-g">C</span>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">KAMSY</span>
+                        <span class="logo-sub">CHEMICALS</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="main-nav">
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li class="nav-toggle"><a href="#" id="mobileMenuToggle"><i class="fas fa-bars"></i></a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="products.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
                 </ul>
-            </div>
+                <button class="hamburger-menu" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Page Header -->
-    <section class="page-header page-header-services">
-        <div class="container">
-            <h1>Our Services</h1>
-            <p>Comprehensive Chemical Solutions for Your Business</p>
+    <!-- Page Header Hero -->
+    <section class="page-header-hero">
+        <div class="page-header-background">
+            <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1920&h=600&fit=crop" alt="Services Background">
+            <div class="page-header-overlay"></div>
+        </div>
+        <div class="page-header-content">
+            <h1 class="page-header-title">SERVICES</h1>
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator">></span>
+                <span class="breadcrumb-current">Services</span>
+            </div>
         </div>
     </section>
 
