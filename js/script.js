@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Section Scroll Animations
-    const animatedSections = document.querySelectorAll('.about-section, .portfolio-section, .management-section, .insights-section, .about-story-section, .brands-section, .contact-section-new, .map-section-new, .services-section, .service-process');
+    const animatedSections = document.querySelectorAll('.about-section, .portfolio-section, .management-section, .insights-section, .about-story-section, .brands-section, .contact-section-new, .map-section-new, .services-section, .service-process, .leadership-section, .mission-values-section, .business-services-section, .team-section, .partners-section, .clientele-section, .hse-section, .bop-section');
     
     if (animatedSections.length > 0) {
         const observerOptions = {
