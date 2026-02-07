@@ -351,4 +351,54 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // Section Scroll Animations
+    const animatedSections = document.querySelectorAll('.about-section, .portfolio-section, .management-section, .insights-section, .about-story-section, .brands-section, .contact-section-new, .map-section-new, .services-section, .service-process');
+    
+    if (animatedSections.length > 0) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        animatedSections.forEach(section => {
+            section.classList.add('animate-section');
+            observer.observe(section);
+        });
+    }
+
+    // Animate cards and items within sections
+    const animatedCards = document.querySelectorAll('.portfolio-card, .insight-card, .profile-card, .brand-card, .service-card, .gallery-item');
+    
+    if (animatedCards.length > 0) {
+        const cardObserverOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -30px 0px'
+        };
+
+        const cardObserver = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-fade-in');
+                    }, index * 100); // Stagger animation
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, cardObserverOptions);
+
+        animatedCards.forEach(card => {
+            card.classList.add('animate-section');
+            cardObserver.observe(card);
+        });
+    }
 });
