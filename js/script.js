@@ -1,5 +1,5 @@
 // ============================================
-// Amanda Group Style - Main JavaScript
+// Kamsy Chemicals & Allied Products Ltd - Main JavaScript
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -187,10 +187,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const portfolioPrevBtn = document.getElementById('portfolioPrevBtn');
     const portfolioNextBtn = document.getElementById('portfolioNextBtn');
     const portfolioCards = document.querySelectorAll('.portfolio-card');
+    let portfolioInterval;
 
     if (portfolioCarousel && portfolioCards.length > 0) {
         const gap = 30;
         let currentPosition = 0;
+        let isAutoScrolling = true;
 
         function getScrollAmount() {
             if (portfolioCards[0]) {
@@ -199,34 +201,88 @@ document.addEventListener('DOMContentLoaded', function() {
             return 410; // fallback
         }
 
-        // Next button
-        if (portfolioNextBtn) {
-            portfolioNextBtn.addEventListener('click', function() {
-                const scrollAmount = getScrollAmount();
-                currentPosition += scrollAmount;
-                const maxScroll = portfolioCarousel.scrollWidth - portfolioCarousel.clientWidth;
-                if (currentPosition > maxScroll) {
-                    currentPosition = maxScroll;
-                }
+        function scrollToNext() {
+            const scrollAmount = getScrollAmount();
+            const maxScroll = portfolioCarousel.scrollWidth - portfolioCarousel.clientWidth;
+            
+            currentPosition += scrollAmount;
+            
+            // Check if we've reached or passed the end
+            if (currentPosition >= maxScroll - 10) { // Small buffer for smooth transition
+                // Smoothly reset to beginning
+                currentPosition = 0;
+                portfolioCarousel.scrollTo({
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            } else {
                 portfolioCarousel.scrollTo({
                     left: currentPosition,
                     behavior: 'smooth'
                 });
+            }
+        }
+
+        function startPortfolioCarousel() {
+            if (isAutoScrolling) {
+                portfolioInterval = setInterval(scrollToNext, 2500); // Auto-slide every 2.5 seconds
+            }
+        }
+
+        function stopPortfolioCarousel() {
+            clearInterval(portfolioInterval);
+        }
+
+        // Next button
+        if (portfolioNextBtn) {
+            portfolioNextBtn.addEventListener('click', function() {
+                stopPortfolioCarousel();
+                const scrollAmount = getScrollAmount();
+                const maxScroll = portfolioCarousel.scrollWidth - portfolioCarousel.clientWidth;
+                
+                currentPosition += scrollAmount;
+                if (currentPosition >= maxScroll - 10) {
+                    currentPosition = 0; // Loop back to start
+                }
+                
+                portfolioCarousel.scrollTo({
+                    left: currentPosition,
+                    behavior: 'smooth'
+                });
+                // Restart auto-scroll after 3 seconds
+                setTimeout(startPortfolioCarousel, 3000);
             });
         }
 
         // Previous button
         if (portfolioPrevBtn) {
             portfolioPrevBtn.addEventListener('click', function() {
+                stopPortfolioCarousel();
                 const scrollAmount = getScrollAmount();
+                const maxScroll = portfolioCarousel.scrollWidth - portfolioCarousel.clientWidth;
+                
                 currentPosition -= scrollAmount;
                 if (currentPosition < 0) {
-                    currentPosition = 0;
+                    currentPosition = maxScroll; // Loop to end
                 }
+                
                 portfolioCarousel.scrollTo({
                     left: currentPosition,
                     behavior: 'smooth'
                 });
+                // Restart auto-scroll after 3 seconds
+                setTimeout(startPortfolioCarousel, 3000);
+            });
+        }
+
+        // Pause on hover
+        const portfolioSection = document.querySelector('.portfolio-section');
+        if (portfolioSection) {
+            portfolioSection.addEventListener('mouseenter', function() {
+                stopPortfolioCarousel();
+            });
+            portfolioSection.addEventListener('mouseleave', function() {
+                startPortfolioCarousel();
             });
         }
 
@@ -234,69 +290,78 @@ document.addEventListener('DOMContentLoaded', function() {
         portfolioCarousel.addEventListener('scroll', function() {
             currentPosition = portfolioCarousel.scrollLeft;
         });
+
+        // Start auto-scrolling
+        startPortfolioCarousel();
     }
 
-    // Insights Carousel Auto-Slide Functionality
-    const insightsCarousel = document.getElementById('insightsCarousel');
-    const insightCards = document.querySelectorAll('.insight-card');
-    
-    if (insightsCarousel && insightCards.length > 0) {
-        let currentInsightIndex = 0;
+    // Products Showcase Carousel Auto-Slide Functionality
+    const productsShowcaseCarousel = document.getElementById('productsShowcaseCarousel');
+    const productShowcaseCards = document.querySelectorAll('.product-showcase-card');
+    let productsShowcaseInterval;
+
+    if (productsShowcaseCarousel && productShowcaseCards.length > 0) {
         const gap = 30;
-        let insightsInterval;
-        let isPaused = false;
-        
-        function getCardWidth() {
-            if (insightCards[0]) {
-                return insightCards[0].offsetWidth;
+        let currentPosition = 0;
+        let isAutoScrolling = true;
+
+        function getScrollAmount() {
+            if (productShowcaseCards[0]) {
+                return productShowcaseCards[0].offsetWidth + gap;
             }
-            return 350; // fallback
+            return 380; // fallback (350px card + 30px gap)
         }
 
-        function slideInsights() {
-            if (isPaused) return;
+        function scrollToNext() {
+            const scrollAmount = getScrollAmount();
+            const maxScroll = productsShowcaseCarousel.scrollWidth - productsShowcaseCarousel.clientWidth;
             
-            currentInsightIndex++;
-            const maxIndex = insightCards.length - 1;
-            const cardWidth = getCardWidth();
-            const scrollAmount = cardWidth + gap;
+            currentPosition += scrollAmount;
             
-            // If we've reached the end, reset to beginning
-            if (currentInsightIndex > maxIndex) {
-                currentInsightIndex = 0;
-                insightsCarousel.style.transition = 'none';
-                insightsCarousel.style.transform = 'translateX(0)';
-                // Force reflow
-                void insightsCarousel.offsetWidth;
-                insightsCarousel.style.transition = 'transform 0.6s ease';
+            // Check if we've reached or passed the end
+            if (currentPosition >= maxScroll - 10) { // Small buffer for smooth transition
+                // Smoothly reset to beginning
+                currentPosition = 0;
+                productsShowcaseCarousel.scrollTo({
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                productsShowcaseCarousel.scrollTo({
+                    left: currentPosition,
+                    behavior: 'smooth'
+                });
             }
-            
-            const translateX = -currentInsightIndex * scrollAmount;
-            insightsCarousel.style.transform = `translateX(${translateX}px)`;
         }
 
-        // Start auto-sliding every 3.5 seconds
-        function startInsightsCarousel() {
-            insightsInterval = setInterval(slideInsights, 3500);
+        function startProductsShowcaseCarousel() {
+            if (isAutoScrolling) {
+                productsShowcaseInterval = setInterval(scrollToNext, 2500); // Auto-slide every 2.5 seconds
+            }
         }
 
-        function stopInsightsCarousel() {
-            clearInterval(insightsInterval);
+        function stopProductsShowcaseCarousel() {
+            clearInterval(productsShowcaseInterval);
         }
 
         // Pause on hover
-        const insightsSection = document.querySelector('.insights-section');
-        if (insightsSection) {
-            insightsSection.addEventListener('mouseenter', function() {
-                isPaused = true;
+        const productsShowcaseSection = document.querySelector('.products-showcase-section');
+        if (productsShowcaseSection) {
+            productsShowcaseSection.addEventListener('mouseenter', function() {
+                stopProductsShowcaseCarousel();
             });
-            insightsSection.addEventListener('mouseleave', function() {
-                isPaused = false;
+            productsShowcaseSection.addEventListener('mouseleave', function() {
+                startProductsShowcaseCarousel();
             });
         }
 
-        // Initialize carousel
-        startInsightsCarousel();
+        // Update position on scroll
+        productsShowcaseCarousel.addEventListener('scroll', function() {
+            currentPosition = productsShowcaseCarousel.scrollLeft;
+        });
+
+        // Start auto-scrolling
+        startProductsShowcaseCarousel();
     }
 
     // Footer Top Carousel

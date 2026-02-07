@@ -1,5 +1,5 @@
 /* ============================================
-   Amanda Group Style - Main Stylesheet
+   Kamsy Chemicals & Allied Products Ltd - Main Stylesheet
    ============================================ */
 
 /* Reset & Base Styles */
@@ -17,9 +17,6 @@
     --brand-red: #DC2626;
     --brand-red-dark: #B91C1C;
     --brand-red-light: #EF4444;
-    /* Legacy orange (keeping for gradual transition) */
-    --orange: #FF6600;
-    --orange-dark: #E55A00;
     /* Neutral Colors */
     --white: #FFFFFF;
     --dark-grey: #2C2C2C;
@@ -300,65 +297,6 @@ body.top-bar-hidden .page-header-hero {
     height: 2px;
     background: #5a4a3a;
     transition: all 0.3s ease;
-}
-
-/* Left Vertical Sidebar */
-.left-sidebar {
-    display: none;
-}
-
-.sidebar-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    align-items: center;
-}
-
-.contact-info-vertical {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-}
-
-.contact-item {
-    color: var(--white);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-}
-
-.carousel-nav-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.carousel-nav-btn {
-    width: 40px;
-    height: 40px;
-    background: transparent;
-    border: 2px solid var(--white);
-    color: var(--white);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    border-radius: 2px;
-}
-
-.carousel-nav-btn:hover {
-    background: var(--white);
-    color: var(--brand-blue);
-}
-
-.carousel-nav-btn i {
-    font-size: 14px;
 }
 
 /* Hero Section */
@@ -1436,27 +1374,28 @@ body.top-bar-hidden .page-header-hero {
 }
 
 /* Insights & Announcements Section */
-.insights-section {
+/* Products Showcase Section */
+.products-showcase-section {
     width: 100%;
     padding: 100px 60px;
     background: var(--white);
 }
 
-.insights-container {
+.products-showcase-container {
     max-width: 1400px;
     margin: 0 auto;
 }
 
-.insights-header {
+.products-showcase-header {
     margin-bottom: 60px;
 }
 
-.insights-header-left {
+.products-showcase-header-left {
     display: flex;
     flex-direction: column;
 }
 
-.insights-subtitle {
+.products-showcase-subtitle {
     color: var(--brand-red);
     font-size: 14px;
     font-weight: 600;
@@ -1465,14 +1404,14 @@ body.top-bar-hidden .page-header-hero {
     margin-bottom: 10px;
 }
 
-.insights-line {
+.products-showcase-line {
     width: 50px;
     height: 2px;
     background: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-red) 100%);
     margin-bottom: 20px;
 }
 
-.insights-title {
+.products-showcase-title {
     font-size: 48px;
     font-weight: 800;
     color: var(--dark-grey);
@@ -1481,20 +1420,28 @@ body.top-bar-hidden .page-header-hero {
     line-height: 1.2;
 }
 
-.insights-carousel-wrapper {
+.products-showcase-carousel-wrapper {
     position: relative;
     overflow: hidden;
     width: 100%;
 }
 
-.insights-carousel {
+.products-showcase-carousel {
     display: flex;
     gap: 30px;
-    transition: transform 0.6s ease;
-    will-change: transform;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
 }
 
-.insight-card {
+.products-showcase-carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.product-showcase-card {
     width: 350px;
     background: var(--white);
     border: 1px solid #e5e5e5;
@@ -1507,13 +1454,13 @@ body.top-bar-hidden .page-header-hero {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.insight-card:hover {
+.product-showcase-card:hover {
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
     transform: translateY(-8px);
     border-color: var(--brand-blue);
 }
 
-.insight-image {
+.product-showcase-image {
     width: 100%;
     height: 200px;
     overflow: hidden;
@@ -1521,7 +1468,7 @@ body.top-bar-hidden .page-header-hero {
     flex-shrink: 0;
 }
 
-.insight-image img {
+.product-showcase-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1529,18 +1476,18 @@ body.top-bar-hidden .page-header-hero {
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.insight-card:hover .insight-image img {
+.product-showcase-card:hover .product-showcase-image img {
     transform: scale(1.08);
 }
 
-.insight-content {
+.product-showcase-content {
     padding: 25px;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.insight-label {
+.product-showcase-label {
     font-size: 12px;
     font-weight: 600;
     color: var(--text-grey);
@@ -1550,16 +1497,17 @@ body.top-bar-hidden .page-header-hero {
     margin-bottom: 15px;
 }
 
-.insight-title {
-    font-size: 18px;
+.product-showcase-content .product-showcase-title {
+    font-size: 20px;
     font-weight: 700;
     color: var(--dark-grey);
     line-height: 1.4;
     margin-bottom: 12px;
     flex: 1;
+    letter-spacing: 0;
 }
 
-.insight-description {
+.product-showcase-description {
     font-size: 14px;
     line-height: 1.6;
     color: var(--text-grey);
@@ -1570,7 +1518,7 @@ body.top-bar-hidden .page-header-hero {
     overflow: hidden;
 }
 
-.insight-link {
+.product-showcase-link {
     font-size: 14px;
     font-weight: 600;
     color: var(--dark-grey);
@@ -1580,7 +1528,7 @@ body.top-bar-hidden .page-header-hero {
     display: inline-block;
 }
 
-.insight-link:hover {
+.product-showcase-link:hover {
     color: var(--brand-blue);
 }
 
@@ -2169,6 +2117,93 @@ body.top-bar-hidden .page-header-hero {
     transition: color 0.3s ease;
 }
 
+/* Services Section New (for services.html) */
+.services-section-new {
+    width: 100%;
+    padding: 100px 60px;
+    background: var(--white);
+    margin-top: 80px;
+}
+
+.services-container-new {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.services-grid-new {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.service-item-new {
+    text-align: center;
+    padding: 50px 30px;
+    background: #f8f8f8;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+}
+
+.service-item-new:hover {
+    background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-red) 100%);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 102, 204, 0.3), 0 8px 20px rgba(220, 38, 38, 0.2);
+    border-color: transparent;
+}
+
+.service-icon-new {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-red) 100%);
+    border-radius: 50%;
+    transition: all 0.4s ease;
+}
+
+.service-item-new:hover .service-icon-new {
+    background: var(--white);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.service-icon-new i {
+    font-size: 36px;
+    color: var(--white);
+    transition: color 0.4s ease;
+}
+
+.service-item-new:hover .service-icon-new i {
+    color: var(--brand-blue);
+}
+
+.service-title-new {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark-grey);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.4s ease;
+}
+
+.service-item-new:hover .service-title-new {
+    color: var(--white);
+}
+
+.service-description-new {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-grey);
+    transition: color 0.4s ease;
+}
+
+.service-item-new:hover .service-description-new {
+    color: rgba(255, 255, 255, 0.95);
+}
+
 /* Team Section */
 .team-section {
     width: 100%;
@@ -2371,107 +2406,6 @@ body.top-bar-hidden .page-header-hero {
 }
 
 /* Footer */
-/* Our Brands Section */
-.brands-section {
-    width: 100%;
-    padding: 100px 60px;
-    background: var(--white);
-}
-
-.brands-container {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.brands-title {
-    font-size: 48px;
-    font-weight: 800;
-    color: var(--dark-grey);
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-}
-
-.brands-separator {
-    width: 100px;
-    height: 2px;
-    background: #e0e0e0;
-    margin: 0 auto 60px;
-}
-
-.brands-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 60px;
-    align-items: center;
-    justify-items: center;
-}
-
-.brand-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 30px;
-    border-radius: 8px;
-}
-
-.brand-card:hover {
-    transform: translateY(-8px);
-    background: rgba(0, 102, 204, 0.05);
-    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.1);
-}
-
-.brand-logo {
-    width: 120px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-.brand-monogram {
-    font-size: 48px;
-    font-weight: 800;
-    color: var(--dark-grey);
-    letter-spacing: -2px;
-    font-family: 'Poppins', sans-serif;
-}
-
-.brand-name {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.brand-main {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--dark-grey);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.brand-sub {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-grey);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.brand-signature {
-    font-family: 'Poppins', sans-serif;
-    font-style: italic;
-    text-transform: none;
-    font-weight: 500;
-    letter-spacing: 1px;
-}
-
 .main-footer {
     width: 100%;
     background: #000000;
@@ -2914,10 +2848,6 @@ body.top-bar-hidden .page-header-hero {
         margin-top: 100px;
     }
     
-    .left-sidebar {
-        display: none;
-    }
-    
     .hero-section {
         margin-left: 0;
     }
@@ -3119,16 +3049,16 @@ body.top-bar-hidden .page-header-hero {
         gap: 40px;
     }
     
-    .insights-section {
+    .products-showcase-section {
         margin-left: 0;
         padding: 60px 30px;
     }
     
-    .insights-title {
+    .products-showcase-title {
         font-size: 36px;
     }
     
-    .insight-card {
+    .product-showcase-card {
         min-width: 100%;
     }
     
@@ -3157,34 +3087,44 @@ body.top-bar-hidden .page-header-hero {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    .services-section-new {
+        padding: 60px 30px;
+    }
+    
+    .services-grid-new {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .service-item-new {
+        padding: 35px 20px;
+    }
+    
+    .service-icon-new {
+        width: 65px;
+        height: 65px;
+        margin-bottom: 20px;
+    }
+    
+    .service-icon-new i {
+        font-size: 28px;
+    }
+    
+    .service-title-new {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .service-description-new {
+        font-size: 14px;
+    }
+    
     .partners-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
     .clientele-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .brands-section {
-        padding: 60px 30px;
-    }
-    
-    .brands-title {
-        font-size: 36px;
-    }
-    
-    .brands-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-    }
-    
-    .brand-logo {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .brand-monogram {
-        font-size: 40px;
     }
     
     .products-page-section {
@@ -3556,23 +3496,23 @@ body.top-bar-hidden .page-header-hero {
         font-size: 16px;
     }
     
-    .insights-section {
+    .products-showcase-section {
         padding: 40px 20px;
     }
     
-    .insights-title {
+    .products-showcase-title {
         font-size: 28px;
     }
     
-    .insight-card {
+    .product-showcase-card {
         min-width: 100%;
     }
     
-    .insight-content {
+    .product-showcase-content {
         padding: 20px;
     }
     
-    .insight-title {
+    .product-showcase-content .product-showcase-title {
         font-size: 18px;
     }
     
@@ -3657,6 +3597,38 @@ body.top-bar-hidden .page-header-hero {
         width: 45px;
         height: 45px;
         border-width: 1px;
+    }
+    
+    .services-section-new {
+        padding: 50px 20px;
+    }
+    
+    .services-grid-new {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .service-item-new {
+        padding: 30px 20px;
+    }
+    
+    .service-icon-new {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+    
+    .service-icon-new i {
+        font-size: 24px;
+    }
+    
+    .service-title-new {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+    
+    .service-description-new {
+        font-size: 13px;
     }
     
     .contact-info-message {
