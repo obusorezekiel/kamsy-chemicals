@@ -126,9 +126,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Top Bar Hide on Scroll - Only show when at header
+    const topBar = document.querySelector('.top-bar');
+    const headerHeight = 145; // Top bar (45px) + Header (100px)
+    let ticking = false;
+
+    if (topBar) {
+        function updateTopBar() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Show top bar only when at the top (within header area)
+            // Hide once scrolled past the header
+            if (scrollTop <= headerHeight) {
+                topBar.classList.remove('top-bar-hidden');
+                document.body.classList.remove('top-bar-hidden');
+            } else {
+                topBar.classList.add('top-bar-hidden');
+                document.body.classList.add('top-bar-hidden');
+            }
+            
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateTopBar);
+                ticking = true;
+            }
+        }, { passive: true });
+        
+        // Initial check
+        updateTopBar();
+    }
+
     // Scroll to Top Button
     const scrollToTopBtn = document.getElementById('scrollToTop');
-    
+
     if (scrollToTopBtn) {
         // Show/hide button based on scroll position
         window.addEventListener('scroll', function() {
