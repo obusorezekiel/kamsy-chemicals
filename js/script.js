@@ -18,6 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (carouselSlides[index]) {
             carouselSlides[index].classList.add('active');
         }
+
+        // Handle text transitions
+        const heroTextSlides = document.querySelectorAll('.hero-text-slide');
+        heroTextSlides.forEach((textSlide, i) => {
+            if (i === index) {
+                textSlide.classList.add('active');
+            } else {
+                textSlide.classList.remove('active');
+            }
+        });
     }
 
     function nextSlide() {
