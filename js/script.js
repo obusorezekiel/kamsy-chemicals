@@ -19,14 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
             carouselSlides[index].classList.add('active');
         }
 
-        // Handle text transitions
+        // Handle text transitions (cycle copy when there are more image slides than text slides)
         const heroTextSlides = document.querySelectorAll('.hero-text-slide');
+        const textLen = heroTextSlides.length;
+        const textIndex = textLen ? index % textLen : 0;
         heroTextSlides.forEach((textSlide, i) => {
-            if (i === index) {
-                textSlide.classList.add('active');
-            } else {
-                textSlide.classList.remove('active');
-            }
+            textSlide.classList.toggle('active', i === textIndex);
         });
     }
 
@@ -302,7 +300,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (productsShowcaseCarousel && productShowcaseCards.length > 0) {
         const gap = 30;
-        let currentPosition = 0;
         let isAutoScrolling = true;
 
         function getScrollAmount() {
@@ -313,24 +310,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         function scrollToNext() {
+            const el = productsShowcaseCarousel;
             const scrollAmount = getScrollAmount();
-            const maxScroll = productsShowcaseCarousel.scrollWidth - productsShowcaseCarousel.clientWidth;
-            
-            currentPosition += scrollAmount;
-            
-            // Check if we've reached or passed the end
-            if (currentPosition >= maxScroll - 10) { // Small buffer for smooth transition
-                // Smoothly reset to beginning
-                currentPosition = 0;
-                productsShowcaseCarousel.scrollTo({
-                    left: 0,
-                    behavior: 'smooth'
-                });
+            const maxScroll = el.scrollWidth - el.clientWidth;
+            if (maxScroll <= 0) {
+                return;
+            }
+            // Use real scroll position — the old code incremented a counter every 2.5s while
+            // smooth scrolling was still running, so scrollLeft never caught up and the last
+            // cards (e.g. Hydrogen Peroxide) often never appeared.
+            const atEnd = el.scrollLeft >= maxScroll - 8;
+            if (atEnd) {
+                el.scrollTo({ left: 0, behavior: 'smooth' });
             } else {
-                productsShowcaseCarousel.scrollTo({
-                    left: currentPosition,
-                    behavior: 'smooth'
-                });
+                el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
             }
         }
 
@@ -354,11 +347,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 startProductsShowcaseCarousel();
             });
         }
-
-        // Update position on scroll
-        productsShowcaseCarousel.addEventListener('scroll', function() {
-            currentPosition = productsShowcaseCarousel.scrollLeft;
-        });
 
         // Start auto-scrolling
         startProductsShowcaseCarousel();
