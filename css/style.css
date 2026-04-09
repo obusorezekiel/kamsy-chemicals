@@ -243,6 +243,63 @@ body.top-bar-hidden .page-header-hero {
     letter-spacing: 1px;
 }
 
+.site-logo-img {
+    height: 48px;
+    width: auto;
+    max-width: min(220px, 38vw);
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+.logo .site-logo-img + .logo-monogram {
+    display: none;
+}
+
+.footer-site-logo-img {
+    height: 52px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+.footer-logo .footer-site-logo-img + .footer-logo-monogram {
+    display: none;
+}
+
+.page-header-brand-logo {
+    height: 56px;
+    width: auto;
+    max-width: min(260px, 70vw);
+    object-fit: contain;
+    display: block;
+    margin-bottom: 22px;
+    filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.45));
+}
+
+.hero-brand-lockup {
+    position: absolute;
+    top: 14vh;
+    left: 120px;
+    z-index: 4;
+    line-height: 0;
+}
+
+.hero-site-logo {
+    height: clamp(42px, 7.5vh, 76px);
+    width: auto;
+    max-width: min(280px, 58vw);
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 18px rgba(0, 0, 0, 0.55));
+}
+
+.hero-brand-lockup:hover .hero-site-logo {
+    opacity: 0.92;
+}
+
 /* Navigation Menu */
 .main-nav {
     display: flex;
@@ -2845,6 +2902,15 @@ body.top-bar-hidden .page-header-hero {
         padding-left: 80px;
         padding-right: 40px;
     }
+
+    .hero-brand-lockup {
+        left: 80px;
+    }
+
+    .page-header-brand-logo {
+        height: 50px;
+        margin-bottom: 18px;
+    }
     
     .management-profiles {
         grid-template-columns: repeat(2, 1fr);
@@ -2957,6 +3023,26 @@ body.top-bar-hidden .page-header-hero {
     .hero-content {
         padding-left: 40px;
         padding-right: 40px;
+    }
+
+    .hero-brand-lockup {
+        left: 40px;
+        top: 12vh;
+    }
+
+    .site-logo-img {
+        height: 42px;
+        max-width: min(200px, 52vw);
+    }
+
+    .footer-site-logo-img {
+        height: 46px;
+        max-width: 180px;
+    }
+
+    .page-header-brand-logo {
+        height: 44px;
+        margin-bottom: 16px;
     }
     
     .hero-title {
@@ -3499,6 +3585,16 @@ body.top-bar-hidden .page-header-hero {
     .hero-content {
         padding-left: 30px;
         padding-right: 30px;
+    }
+
+    .hero-brand-lockup {
+        left: 30px;
+        top: 11vh;
+    }
+
+    .site-logo-img {
+        height: 38px;
+        max-width: min(180px, 60vw);
     }
     
     .hero-carousel-btn {
