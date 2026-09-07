@@ -438,6 +438,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Product photo galleries
+    document.querySelectorAll('.product-gallery').forEach(gallery => {
+        const panel = gallery.closest('.product-content-panel');
+        const hero = panel ? panel.querySelector('.product-main-image img') : null;
+        if (!hero) return;
+
+        gallery.addEventListener('click', function(event) {
+            const thumb = event.target.closest('.product-gallery-thumb');
+            if (!thumb || !gallery.contains(thumb)) return;
+
+            const fullSrc = thumb.getAttribute('data-full');
+            const label = thumb.getAttribute('aria-label') || '';
+            if (!fullSrc || hero.getAttribute('src') === fullSrc) return;
+
+            gallery.querySelectorAll('.product-gallery-thumb').forEach(item => {
+                item.classList.remove('active');
+                item.setAttribute('aria-selected', 'false');
+            });
+            thumb.classList.add('active');
+            thumb.setAttribute('aria-selected', 'true');
+
+            hero.classList.add('is-switching');
+            window.setTimeout(function() {
+                hero.src = fullSrc;
+                if (label) hero.alt = label;
+                hero.classList.remove('is-switching');
+            }, 150);
+        });
+    });
+
     // Section Scroll Animations
     const animatedSections = document.querySelectorAll('.about-section, .portfolio-section, .management-section, .insights-section, .about-story-section, .brands-section, .contact-section-new, .map-section-new, .services-section, .service-process, .leadership-section, .mission-values-section, .business-services-section, .team-section, .partners-section, .clientele-section, .hse-section, .bop-section');
     
